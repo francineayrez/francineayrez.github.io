@@ -1,0 +1,348 @@
+/* Reset e Base */
+:root {
+  --primary-color: #4a90e2;
+  --primary-dark: #357ABD;
+  --error-color: #e53935;
+  --text-color: #333;
+  --light-gray: #f5f5f5;
+  --white: #ffffff;
+  --disabled-color: #cccccc;
+  --border-radius: 10px;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--light-gray);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  touch-action: manipulation;
+  line-height: 1.5;
+}
+
+/* Estrutura Principal */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  flex: 1;
+}
+
+
+/* Cabeçalho */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+.timer-display {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--error-color);
+}
+
+.hangman-counter {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.player-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+
+.app-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.app-controls {
+  display: flex;
+  gap: 10px;
+}
+
+/* Player de Vídeo */
+.video-player {
+  width: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 16/9;
+  box-shadow: var(--box-shadow);
+}
+
+.video-player video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Controles do Player */
+.player-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 6px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition);
+  min-height: 40px;
+  width: 80px;
+}
+
+.control-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.control-btn:active {
+  transform: scale(0.98);
+}
+
+.control-btn:disabled {
+  background-color: var(--disabled-color);
+  color: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.control-icon {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.control-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+  stroke-width: 2.2;
+  margin-bottom: 4px;
+}
+
+svg.lucide {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Área de Legenda */
+.subtitle-container {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 12px 16px;
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 40px;
+  display: block;
+}
+
+
+
+
+.subtitle-text {
+  font-size: 1rem;
+  text-align: center;
+  word-break: break-word;
+  white-space: normal;
+  line-height: 1.4;
+}
+
+
+/* Jogo da Forca */
+.game-container {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 20px 15px;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.word-display {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.word-letter {
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-width: 20px;
+  height: 30px;
+  font-size: 1.25rem;
+  border-bottom: 2px solid var(--text-color);
+  color: transparent;
+}
+
+.word-letter.revealed {
+  color: var(--text-color);
+  border-bottom: none;
+}
+
+.word-letter.space {
+  border-bottom: none;
+  width: 15px;
+}
+
+/* Status do Jogo */
+.game-status {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+.hangman-counter {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.timer-display {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--error-color);
+}
+
+.error-message {
+  font-size: 0.875rem;
+  color: var(--error-color);
+  font-weight: 500;
+  min-height: 1rem;
+}
+
+/* Botões Especiais */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.file-input-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.file-input-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Teclado Virtual (Opcional) */
+.virtual-keyboard {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.keyboard-key {
+  padding: 10px 5px;
+  background: var(--white);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.keyboard-key:hover {
+  background: #f0f0f0;
+}
+
+.keyboard-key:disabled {
+  background: var(--disabled-color);
+  cursor: not-allowed;
+}
+
+/* Responsividade */
+@media (min-width: 600px) {
+  .app-container {
+    max-width: 600px;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .subtitle-text {
+    font-size: 1.25rem;
+  }
+
+  .word-letter {
+    min-width: 22px;
+    height: 32px;
+    font-size: 1.5rem;
+  }
+
+  .virtual-keyboard {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .app-container {
+    max-width: 800px;
+    padding: 25px;
+  }
+
+  .control-btn {
+    padding: 8px 8px;
+    font-size: 0.875rem;
+  }
+
+  .control-icon {
+    font-size: 1rem;
+  }
+}
