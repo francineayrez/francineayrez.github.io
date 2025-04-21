@@ -37,8 +37,6 @@
             </div>
         </header>
 
-
-
         <!-- Player de vídeo -->
         <div class="video-player">
             <video id="video" controls playsinline>
@@ -59,9 +57,13 @@
         <!-- Mensagem de erro -->
         <div id="errorMessage" class="error-message"></div>
 
-        <!-- Teclado -->
+        <!-- Teclado virtual (ainda suportado) -->
         <div class="virtual-keyboard" id="virtualKeyboard" style="display: none;"></div>
     </div>
+
+    <!-- Campo oculto para ativar teclado nativo -->
+    <input id="hiddenInput" type="text" inputmode="text" autocomplete="off" autocapitalize="none"
+        style="opacity:0;position:absolute;left:-9999px;" />
 
     <script src="script.js"></script>
     <script>
