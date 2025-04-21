@@ -16,6 +16,10 @@ let pauseTimeout; // Referência para o timeout que pausa o vídeo
 let currentLetterIndex = 0; // Índice da próxima letra a ser adivinhada na palavra atual
 let originalSubtitleData = []; // Armazena os dados originais das legendas
 
+
+
+document.getElementById("hiddenInput").focus();
+
 /**
  * Atualiza a exibição da palavra no jogo da forca
  * Mostra letras já adivinhadas e espaços entre palavras
@@ -446,13 +450,17 @@ document.getElementById("fileInput").addEventListener("change", function (event)
  * @param {Object} subtitle - Objeto de legenda contendo texto e tempos
  */
 function setWordFromSubtitle(subtitle) {
-    // Processa o texto: remove pontuação, converte para minúsculas e mantém apenas letras e espaços
     word = subtitle.text.trim().toLowerCase().replace(/[^a-z\s]/g, '');
     guessed = new Array(word.length).fill(false);
     errors = 0;
     currentLetterIndex = 0;
     document.getElementById("errors").innerText = errors;
     updateWordDisplay();
+
+    // Ativa o teclado nativo ao focar no campo oculto (somente após ação do usuário)
+    const hiddenInput = document.getElementById("hiddenInput");
+    hiddenInput.value = ''; // limpa para nova entrada
+    hiddenInput.focus();
 }
 
 /**
@@ -568,17 +576,3 @@ function generateLetterButtons() {
     // Implementação futura para criar botões de A-Z
     console.log("Função generateLetterButtons() ainda não implementada");
 }
- lucide.createIcons();
-
-        function showNativeKeyboard() {
-            const input = document.getElementById('nativeInput');
-            input.focus();
-            setTimeout(() => {
-                input.setSelectionRange(input.value.length, input.value.length);
-            }, 100);
-        }
-
-        // Exibe teclado nativo no primeiro toque
-        document.addEventListener('touchstart', () => {
-            showNativeKeyboard();
-        }, { once: true });
