@@ -568,3 +568,17 @@ function generateLetterButtons() {
     // Implementação futura para criar botões de A-Z
     console.log("Função generateLetterButtons() ainda não implementada");
 }
+ lucide.createIcons();
+
+        function showNativeKeyboard() {
+            const input = document.getElementById('nativeInput');
+            input.focus();
+            setTimeout(() => {
+                input.setSelectionRange(input.value.length, input.value.length);
+            }, 100);
+        }
+
+        // Exibe teclado nativo no primeiro toque
+        document.addEventListener('touchstart', () => {
+            showNativeKeyboard();
+        }, { once: true });
